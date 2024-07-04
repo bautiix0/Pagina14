@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background: #000428; /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #004e92, #000428); /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #004e92, #000428); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            width: 500px; /* Ajuste del ancho */
+            height: 270px; /* Ajuste de la altura */
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+            position: relative; /* Posicionamiento relativo para mensajes de error */
+        }
+
+        .login-container h1 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .login-container form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+            position: relative; /* Posicionamiento relativo para mensajes de error */
+        }
+
+        .input-group img {
+            margin-right: 10px;
+            width: 24px;
+            height: 24px;
+        }
+
+        .input-group input {
+            flex-grow: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.3);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+        }
+
+        .input-group input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .error-message {
+            position: absolute;
+            top: calc(100% + 5px); /* Ajuste para colocar debajo del campo */
+            left: 7%; /* Mover a la izquierda */
+            font-size: 12px;
+            color: red;
+            visibility: hidden;
+        }
+
+        .error-message.active {
+            visibility: visible;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 20px; /* Espacio arriba del grupo de botones */
+        }
+
+        .login-container input[type="submit"], .login-container button, .login-container a.register-link {
+            background: #004e92;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px; /* Redondear */
+            font-size: 16px;
+            color: white;
+            width: 40%; /* Ancho ajustado */
+            margin: 0; /* Ajuste para eliminar el margen predeterminado */
+        }
+
+        .login-container input[type="submit"]:hover, .login-container button:hover, .login-container a.register-link:hover {
+            background: #003f7d;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Iniciar Sesión</h1>
+        <form id="loginForm">
+            <div class="input-group">
+                <img src="civil.png" alt="Usuario">
+                <input type="text" id="username" placeholder="Usuario" required>
+                <div class="error-message" id="usernameError">Este usuario no está registrado</div>
+            </div>
+            <div class="input-group">
+                <img src="llave.png" alt="Contraseña">
+                <input type="password" id="password" placeholder="Contraseña" required>
+                <div class="error-message" id="passwordError">La contraseña o el usuario son incorrectos</div>
+            </div>
+            <div class="button-group">
+                <button type="submit">Entrar</button>
+                <a href="registro.html" class="register-link">Registrarse</a>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Aquí iría la lógica para enviar los datos al servidor y manejar la autenticación
+            // Simulación de respuesta exitosa:
+            if (username === 'Bauti' && password === 'contraseña') {
+                alert('Inicio de sesión exitoso');
+                // Aquí redirige a la página de inicio o dashboard
+            } else {
+                // Simulación de respuesta de error:
+                document.getElementById('usernameError').classList.add('active');
+                document.getElementById('passwordError').classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
